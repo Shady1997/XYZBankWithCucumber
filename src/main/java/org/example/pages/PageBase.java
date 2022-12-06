@@ -148,7 +148,7 @@ public class PageBase {
 		TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
 		try {
 			FileHandler.copy(takesScreenshot.getScreenshotAs(OutputType.FILE), new File(System.getProperty("user.dir")
-					+ "\\src\\test\\resources\\Screenshots\\" + screenshotName +System.currentTimeMillis()+ ".png"));
+					+ "/src/test/resources/Screenshots/" + screenshotName +System.currentTimeMillis()+ ".png"));
 		} catch (WebDriverException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -163,7 +163,7 @@ public class PageBase {
 		String projectPath = System.getProperty("user.dir");
 		String cellData = null;
 		try {
-			workBook = new XSSFWorkbook(projectPath + "\\src\\test\\resources\\data_driven\\data.xlsx");
+			workBook = new XSSFWorkbook(projectPath + "/src/test/resources/data_driven/data.xlsx");
 			sheet = workBook.getSheet(SheetName);
 			cellData = sheet.getRow(RowNum).getCell(ColNum).getStringCellValue();
 

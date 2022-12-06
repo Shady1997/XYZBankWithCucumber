@@ -7,11 +7,14 @@ import io.cucumber.java.en.When;
 import org.example.pages.P01_HomePage;
 import org.example.pages.PageBase;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 public class D01_CheckLogin extends TestBase{
     // define page objects
     private P01_HomePage loginPage;
+    private WebDriver testDriver;
+
     // Step1 : Start driver and navigate to target url
     @Given("Start driver and navigate to target url {string}")
     public void startDriverAndNavigateToTargetUrl(String arg0) {
@@ -23,6 +26,7 @@ public class D01_CheckLogin extends TestBase{
     // Step2: Select userName and click login button
     @When("Select userName and click login button")
     public void SelectUserNameAndClickLoginButton(){
+        testDriver=driver;
         loginPage=new P01_HomePage(driver);
         loginPage.loginToXYZBank();
     }
@@ -40,6 +44,9 @@ public class D01_CheckLogin extends TestBase{
         test.log(LogStatus.PASS, "Login Correctly to XYZ Bank");
         Assert.assertEquals(driver.findElement(By.xpath("//span[text()='Albus Dumbledore']")).getText(),"Albus Dumbledore");
         tearDown();
+    }
+    public WebDriver getTestDriver(){
+        return testDriver;
     }
 
 }

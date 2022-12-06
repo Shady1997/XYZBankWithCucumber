@@ -1,3 +1,4 @@
+org\example\Steps\D02_CheckDepositeOperation.class
 org\example\Steps\D01_CheckLogin.class
 org\example\Steps\TestBase.class
 org\example\test_runner\Runner.class

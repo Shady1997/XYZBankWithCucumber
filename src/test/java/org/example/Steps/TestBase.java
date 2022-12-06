@@ -26,8 +26,8 @@ public class TestBase {
 	//public static Properties prop;
 
 	// extend report
-	protected ExtentTest test;
-	protected ExtentReports report;
+	protected static ExtentTest test;
+	protected static ExtentReports report;
 	private ChromeOptions options;
 	protected JavascriptExecutor js;
 
@@ -62,7 +62,7 @@ public class TestBase {
 		} else if (browser.equalsIgnoreCase("Chrome")) {
 //			System.setProperty("webdriver.chrome.driver",
 //					System.getProperty("user.dir") + prop.getProperty("chromedriver"));
-			// use webdrivermanager
+			// use web driver manager
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver(options);
 		} else {
@@ -74,13 +74,13 @@ public class TestBase {
 		// Set Driver wait
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		// define extend report
-		report = new ExtentReports(System.getProperty("user.dir")+"\\ExtentReportResults.html");
+		report = new ExtentReports(System.getProperty("user.dir")+"/ExtentReportResults.html");
 		test = report.startTest("XYZ Project");
 	}
 
 	@Test(priority = 1, groups = "smoke", description = "Start XYZ-Bank Web Application")
 	public void startApplication(){
-		// Mazimize current window
+		// Maximize current window
 		driver.manage().window().maximize();
 		// navigate to website
 		driver.get("https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login");
